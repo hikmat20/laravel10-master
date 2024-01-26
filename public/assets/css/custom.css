@@ -1,0 +1,108 @@
+
+.w-90 {
+    width: 90%;
+}
+
+
+.bg-indigo {
+    background-color: #6610f2;
+}
+
+.bg-purple {
+    background-color: #6f42c1;
+}
+
+.bg-pink {
+    background-color: #e83e8c;
+}
+
+.bg-orange {
+    background-color: #f27510;
+}
+
+.bg-teal {
+    background-color: #1CAF9A;
+}
+
+.bg-br-primary {
+    background-color: #1D2939;
+}
+
+.bg-lightsky {
+    background-color: #E4F2F2;
+}
+
+.bg-mantle {
+    background-image: linear-gradient(to right, #514A9D 0%, #24C6DC 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-reef {
+    background-image: linear-gradient(to right, #3a7bd5 0%, #00d2ff 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-transfile {
+    background-image: linear-gradient(to right, #CB3066 0%, #16BFFD 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-neon {
+    background-image: linear-gradient(to right, #12FFF7 0%, #B3FFAB 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-delicate {
+    background-image: linear-gradient(to right, #E9E4F0 0%, #D3CCE3 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-emerald {
+    background-image: linear-gradient(to right, #56B4D3 0%, #348F50 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-mojito {
+    background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-dance {
+    background-image: linear-gradient(to right, #F9D423 0%, #FF4E50 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-teal-love {
+    background-image: linear-gradient(to right, #11FFBD 0%, #AAFFA9 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-crystal-clear {
+    background-image: linear-gradient(to right, #155799 0%, #159957 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-grandeur {
+    background-image: linear-gradient(to right, #000046 0%, #1CB5E0 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-flickr {
+    background-image: linear-gradient(to right, #33001b 0%, #e20477 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-royal {
+    background-image: linear-gradient(to right, #141E30 0%, #243B55 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-firewatch {
+    background-image: linear-gradient(to right, #cb2d3e 0%, #ef473a 100%);
+    background-repeat: repeat-x;
+}
+
+.bg-teal-info {
+    background-image: linear-gradient(to right, #1CAF9A 0%, #17A2B8 100%);
+    background-repeat: repeat-x;
+}
