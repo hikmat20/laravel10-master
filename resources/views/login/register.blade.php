@@ -69,21 +69,26 @@
                         </div>
                     </div>
 
+
                     <div class="d-flex flex-center flex-column-fluid w-100 w-lg-50 p-7 p-lg-5 py-lg-10 pt-10">
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="#" method="POST" action="{{ route('signup') }}">
+
+                        <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="/signin" method="POST" action="/signup">
                             @csrf
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Sign Up</h1>
                             </div>
 
                             <div class="fv-row mb-5">
-                                <input type="text" placeholder="Full Name" name="full-name" class="form-control bg-transparent" />
+                                <input type="text" placeholder="Full Name" name="full_name" class="form-control bg-transparent" />
                             </div>
+
+                            <!-- <div class="fv-row mb-5">
+                                <input type="text" placeholder="Username" name="username" class="form-control bg-transparent" />
+                            </div> -->
 
                             <div class="fv-row mb-5">
-                                <input type="text" placeholder="Username" name="username" autocomplete="off" class="form-control bg-transparent" />
+                                <input type="text" placeholder="Username" name="username" class="form-control bg-transparent" />
                             </div>
-
                             <div class="fv-row mb-5">
                                 <input type="text" placeholder="Email" name="email" class="form-control bg-transparent" />
                             </div>
