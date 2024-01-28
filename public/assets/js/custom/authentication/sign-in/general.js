@@ -7,15 +7,10 @@ var KTSigninGeneral = (function () {
                 (e = document.querySelector("#kt_sign_in_submit")),
                 (r = FormValidation.formValidation(t, {
                     fields: {
-                        email: {
+                        username: {
                             validators: {
-                                regexp: {
-                                    regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message:
-                                        "The value is not a valid email address",
-                                },
                                 notEmpty: {
-                                    message: "Email address is required",
+                                    message: "Username address is required",
                                 },
                             },
                         },
@@ -42,126 +37,99 @@ var KTSigninGeneral = (function () {
                     } catch (t) {
                         return !1;
                     }
-                })(e.closest("form").getAttribute("action"))
-                    ? e.addEventListener("click", function (i) {
-                          i.preventDefault(),
-                              r.validate().then(function (r) {
-                                  "Valid" == r
-                                      ? (e.setAttribute(
-                                            "data-kt-indicator",
-                                            "on"
-                                        ),
-                                        (e.disabled = !0),
-                                        setTimeout(function () {
-                                            e.removeAttribute(
-                                                "data-kt-indicator"
-                                            ),
-                                                (e.disabled = !1),
-                                                Swal.fire({
-                                                    text: "You have successfully logged in!",
-                                                    icon: "success",
-                                                    buttonsStyling: !1,
-                                                    confirmButtonText:
-                                                        "Ok, got it!",
-                                                    customClass: {
-                                                        confirmButton:
-                                                            "btn btn-primary",
-                                                    },
-                                                }).then(function (e) {
-                                                    if (e.isConfirmed) {
-                                                        (t.querySelector(
-                                                            '[name="email"]'
-                                                        ).value = ""),
-                                                            (t.querySelector(
-                                                                '[name="password"]'
-                                                            ).value = "");
-                                                        var r = t.getAttribute(
-                                                            "data-kt-redirect-url"
-                                                        );
-                                                        r &&
-                                                            (location.href = r);
-                                                    }
-                                                });
-                                        }, 2e3))
-                                      : Swal.fire({
-                                            text: "Sorry, looks like there are some errors detected, please try again.",
-                                            icon: "error",
-                                            buttonsStyling: !1,
-                                            confirmButtonText: "Ok, got it!",
-                                            customClass: {
-                                                confirmButton:
-                                                    "btn btn-primary",
-                                            },
-                                        });
-                              });
-                      })
-                    : e.addEventListener("click", function (i) {
-                          i.preventDefault(),
-                              r.validate().then(function (r) {
-                                  "Valid" == r
-                                      ? (e.setAttribute(
-                                            "data-kt-indicator",
-                                            "on"
-                                        ),
-                                        (e.disabled = !0),
-                                        axios
-                                            .post(
-                                                e
-                                                    .closest("form")
-                                                    .getAttribute("action"),
-                                                new FormData(t)
-                                            )
-                                            .then(function (e) {
-                                                if (e) {
-                                                    t.reset(),
-                                                        Swal.fire({
-                                                            text: "You have successfully logged in!",
-                                                            icon: "success",
-                                                            buttonsStyling: !1,
-                                                            confirmButtonText:
-                                                                "Ok, got it!",
-                                                            customClass: {
-                                                                confirmButton:
-                                                                    "btn btn-primary",
-                                                            },
-                                                        });
-                                                    const e = t.getAttribute(
-                                                        "data-kt-redirect-url"
-                                                    );
-                                                    e && (location.href = e);
-                                                } else Swal.fire({ text: "Sorry, the email or password is incorrect, please try again.", icon: "error", buttonsStyling: !1, confirmButtonText: "Ok, got it!", customClass: { confirmButton: "btn btn-primary" } });
-                                            })
-                                            .catch(function (t) {
-                                                Swal.fire({
-                                                    text: "Sorry, looks like there are some errors detected, please try again.",
-                                                    icon: "error",
-                                                    buttonsStyling: !1,
-                                                    confirmButtonText:
-                                                        "Ok, got it!",
-                                                    customClass: {
-                                                        confirmButton:
-                                                            "btn btn-primary",
-                                                    },
-                                                });
-                                            })
-                                            .then(() => {
-                                                e.removeAttribute(
-                                                    "data-kt-indicator"
-                                                ),
-                                                    (e.disabled = !1);
-                                            }))
-                                      : Swal.fire({
-                                            text: "Sorry, looks like there are some errors detected, please try again.",
-                                            icon: "error",
-                                            buttonsStyling: !1,
-                                            confirmButtonText: "Ok, got it!",
-                                            customClass: {
-                                                confirmButton:
-                                                    "btn btn-primary",
-                                            },
-                                        });
-                              });
-                      });
+                })(
+                    e.addEventListener("click", function (i) {
+                        i.preventDefault(),
+                            r.revalidateField("password"),
+                            r.validate().then(function (r) {
+                                "Valid" == r
+                                    ? (e.setAttribute(
+                                          "data-kt-indicator",
+                                          "on"
+                                      ),
+                                      (e.disabled = !0),
+                                      axios
+                                          .post(
+                                              e
+                                                  .closest("form")
+                                                  .getAttribute("action"),
+                                              new FormData(t)
+                                          )
+                                          .then((response) => {
+                                              console.log(response);
+                                              if (response.data.success) {
+                                                  Swal.fire({
+                                                      text: "Signup successfully, Thank you!",
+                                                      icon: "success",
+                                                      buttonsStyling: !1,
+                                                      cancelButton: true,
+                                                      confirmButtonText:
+                                                          "Login!",
+                                                      customClass: {
+                                                          confirmButton:
+                                                              "btn btn-primary",
+                                                      },
+                                                  }).then(function (c) {
+                                                      if (c.isConfirmed) {
+                                                        location.href = '/';
+                                                      }
+                                                  });
+                                              } else {
+                                                  
+                                                  Swal.fire({
+                                                      html: `Sorry, looks like there are some errors detected, please try again. <br>
+                                                            <div class="alert alert-danger p-3 mt-3" role="alert">
+                                                            ${response.data.error}
+                                                            </div>`,
+                                                      icon: "error",
+                                                      buttonsStyling: !1,
+                                                      confirmButtonText:
+                                                          "Try again!",
+                                                      customClass: {
+                                                          confirmButton:
+                                                              "btn btn-primary shadow",
+                                                      },
+                                                  });
+                                              }
+                                          })
+                                          .catch((error) => {
+                                              console.log(error.response.data);
+                                              Swal.fire({
+                                                  text: "Sorry, looks like there are some errors detected, please try again.",
+                                                  icon: "error",
+                                                  buttonsStyling: !1,
+                                                  confirmButtonText:
+                                                      "Ok, Try again!",
+                                                  customClass: {
+                                                      confirmButton:
+                                                          "btn btn-primary",
+                                                  },
+                                              });
+                                          })
+                                          .then(() => {
+                                              e.removeAttribute(
+                                                  "data-kt-indicator"
+                                              ),
+                                                  (e.disabled = !1);
+                                          }))
+                                    : Swal.fire({
+                                          text: "Sorry, looks like there are some errors detected, please try again.",
+                                          icon: "error",
+                                          buttonsStyling: !1,
+                                          confirmButtonText: "Ok, got it!",
+                                          customClass: {
+                                              confirmButton: "btn btn-primary",
+                                          },
+                                      });
+                            });
+                    }),
+                    t
+                        .querySelector('input[name="password"]')
+                        .addEventListener("input", function () {
+                            this.value.length > 0 &&
+                                r.updateFieldStatus("password", "NotValidated");
+                        })
+                );
         },
     };
 })();

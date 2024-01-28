@@ -70,13 +70,14 @@
                     </div>
 
                     <div class="d-flex flex-center flex-column-fluid w-100 w-lg-50 p-7 p-lg-5 py-lg-20 pt-10">
-                        <form class="form flex-column-fluid" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/login" action="#">
+                        <form class="form flex-column-fluid" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="{{route('home')}}" action="/signin">
+                            @csrf
                             <div class="text-center mb-11">
                                 <h1 class="text-gray-900 fw-bolder mb-3">Sign In</h1>
                             </div>
 
                             <div class="fv-row mb-8">
-                                <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" />
+                                <input type="text" placeholder="Username" name="username" autocomplete="off" class="form-control bg-transparent" />
                             </div>
 
                             <div class="fv-row mb-3" data-kt-password-meter="true">
@@ -89,7 +90,7 @@
 
                             <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
                                 <div class="form-check form-check-custom">
-                                    <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" />
+                                    <input class="form-check-input" name="remeber-me" type="checkbox" value="1" id="flexCheckDefault" />
                                     <label class="form-check-label" for="flexCheckDefault">Remember Me</label>
                                 </div>
                                 <a href="reset-password.html" class="link-primary">Forgot Password ?</a>
