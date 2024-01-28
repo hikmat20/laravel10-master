@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $data = User::all();
+
+        return view('user.index',$data);
     }
 
     /**
@@ -60,6 +62,6 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
-        //
+       
     }
 }
